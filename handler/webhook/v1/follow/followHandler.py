@@ -1,4 +1,7 @@
 from singleton.LineClient import LineClient
+from linebot.models import (
+    TextSendMessage
+)
 
 class FollowEventHandler:
     def __init__(self):
@@ -11,14 +14,10 @@ class FollowEventHandler:
         userID = event.source.userId
         profile = self.lineClient.get_profile(userID)
         firstName = profile.displayName.split(' ')[0]
-        messages = {
-            'type': 'text',
-            'text': "Halo, " + firstName + ", terima kasih sudah follow saya "
-        }
 
         self.lineClient.replyMessage(
             event.replyToken,
-            messages
+            TextSendMessage(text="Halo, " + firstName + ", terima kasih sudah follow saya ")
         )
 
 
