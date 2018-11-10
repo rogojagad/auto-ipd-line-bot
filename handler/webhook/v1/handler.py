@@ -1,13 +1,11 @@
 import json
-import loader
-
-import messageHandler
-import followHandler
+from handler.webhook.v1.message.messageHandler import MessageEventHandler
+from handler.webhook.v1.follow.followHandler import FollowEventHandler
 
 class Handler:
     def __init__(self):
-        self.msgHandler = messageHandler.MessageEventHandler()
-        self.followHandler = followHandler.FollowEventHandler()
+        self.msgHandler = MessageEventHandler()
+        self.followHandler = FollowEventHandler()
         # pass
 
     def handle(self, event):
