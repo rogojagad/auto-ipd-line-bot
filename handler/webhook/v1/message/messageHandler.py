@@ -9,9 +9,15 @@ class MessageEventHandler:
 
     def handle(self, event):
         # return event.message.text
+
+        messages = {
+            'type' : 'text',
+            'text' : event.message.text
+        }
+
         self.lineClient.reply_message(
             event.reply_token,
-            TextSendMessage(text=event.message.text)
+            messages
         )
 
     def test(self):
