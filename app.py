@@ -54,12 +54,12 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    answer = eventHandler.handle(event=event)
+    eventHandler.handle(event=event)
 
-    lineBotApi.reply_message(
-        event.reply_token,
-        TextSendMessage(text=answer)
-    )
+    # lineBotApi.reply_message(
+    #     event.reply_token,
+    #     TextSendMessage(text=answer)
+    # )
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(

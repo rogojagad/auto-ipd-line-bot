@@ -1,9 +1,18 @@
+from singleton.LineClient import LineClient
+from linebot.models import (
+    TextSendMessage
+)
+
 class MessageEventHandler:
     def __init__(self):
-        pass
+        self.lineClient = LineClient()
 
     def handle(self, event):
-        return event.message.text
+        # return event.message.text
+        self.lineClient.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
+        )
 
     def test(self):
         print("Message event handler loaded")

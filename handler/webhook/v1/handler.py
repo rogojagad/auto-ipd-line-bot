@@ -10,12 +10,12 @@ class Handler:
 
     def handle(self, event):
         if(event.type == 'message'):
-            return self.msgHandler.handle(event)
+            self.msgHandler.handle(event)
         if(event.type == 'follow'):
-            return self.followHandler.handle(event)
+            self.followHandler.handle(event)
 
     def test(self, msg):
-        return self.msgHandler.handle(msg)
+        self.msgHandler.handle(msg)
         # pass
 
 if __name__ == "__main__":
