@@ -1,13 +1,12 @@
 import os
 import sys
 from argparse import ArgumentParser
-from dotenv import load_dotenv
 from handler.webhook.v1.handler import Handler
-
 from flask import Flask, request, abort
+from singleton.LineClient import LineClient
 
 from linebot import (
-    LineBotApi, WebhookHandler
+    WebhookHandler
 )
 
 from linebot.exceptions import (
@@ -18,15 +17,13 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage
 )
 
-load_dotenv()
-
 channelSecret = os.environ.get("LINE_CHANNEL_SECRET")
 channelAccessToken = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
 
 app = Flask(__name__)
 eventHandler = Handler()
 
-lineBotApi = LineBotApi(channelAccessToken)
+lineBotApi = LineClient()
 handler = WebhookHandler(channelSecret)
 
 @app.route("/test", methods=["GET"])
