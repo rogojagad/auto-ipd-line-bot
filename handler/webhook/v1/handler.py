@@ -9,6 +9,7 @@ class Handler:
         # pass
 
     def handle(self, event):
+        print(event)
         if(event.type == 'message'):
             self.msgHandler.handle(event)
         if(event.type == 'follow'):
