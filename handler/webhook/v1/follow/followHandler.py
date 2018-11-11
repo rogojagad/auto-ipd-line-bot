@@ -16,7 +16,7 @@ class FollowEventHandler:
         firstName = profile.display_name.split(' ')[0]
 
         self.lineClient.reply_message(
-            event.replyToken,
+            event.reply_token,
             TextSendMessage(text="Halo, " + firstName + ", terima kasih sudah follow saya ")
         )
 
