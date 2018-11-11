@@ -14,7 +14,7 @@ class FollowEventHandler:
         userID = event.source.user_id
         profile = self.lineClient.get_profile(userID)
         print(profile)
-        # firstName = profile.display_name.split(' ')[0]
+        firstName = profile.displayName.split(' ')[0]
 
         self.lineClient.replyMessage(
             event.replyToken,

@@ -17,13 +17,11 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage
 )
 
-channelSecret = os.environ.get("LINE_CHANNEL_SECRET")
-channelAccessToken = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
-
 app = Flask(__name__)
 eventHandler = Handler()
-
 lineBotApi = LineClient()
+
+channelSecret = os.environ.get("LINE_CHANNEL_SECRET")
 handler = WebhookHandler(channelSecret)
 
 @app.route("/test", methods=["GET"])
@@ -55,11 +53,6 @@ def callback():
 @handler.default()
 def handleEvent(event):
     eventHandler.handle(event=event)
-
-    # lineBotApi.reply_message(
-    #     event.reply_token,
-    #     TextSendMessage(text=answer)
-    # )
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
