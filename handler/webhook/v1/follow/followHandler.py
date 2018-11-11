@@ -11,7 +11,7 @@ class FollowEventHandler:
         print("Follow event handler loaded")
 
     def handle(self, event):
-        userID = event.source.userId
+        userID = event.source.user_id
         profile = self.lineClient.get_profile(userID)
         firstName = profile.displayName.split(' ')[0]
 
