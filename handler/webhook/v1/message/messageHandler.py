@@ -9,11 +9,11 @@ class MessageEventHandler:
 
     def handle(self, event):
         # return event.message.text
-        userId = event.source.userId
+        userId = event.source.user_id
 
         profile = self.lineClient.get_profile(userId)
 
-        print(profile.displayName)
+        print(profile.display_name)
 
         self.lineClient.reply_message(
             event.reply_token,
