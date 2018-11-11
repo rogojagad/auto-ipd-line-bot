@@ -52,8 +52,8 @@ def callback():
 
     return 'OK'
 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
+@handler.default()
+def handleEvent(event):
     eventHandler.handle(event=event)
 
     # lineBotApi.reply_message(
