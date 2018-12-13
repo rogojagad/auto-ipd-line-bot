@@ -4,7 +4,7 @@ from argparse import ArgumentParser
 from handler.webhook.v1.handler import Handler
 from flask import Flask, request, abort
 from singleton.LineClient import LineClient
-
+import traceback
 from linebot import (
     WebhookHandler
 )
@@ -52,7 +52,16 @@ def callback():
 
 @handler.default()
 def handleEvent(event):
-    eventHandler.handle(event=event)
+    try:
+        eventHandler.handle(event=event)
+    except Exception as error:
+        lineBotApi.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Terjadi kesalahan, silahkan coba lagi")
+        )
+
+        print(str(error))
+        traceback.print_exc()
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(

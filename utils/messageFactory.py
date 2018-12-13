@@ -1,6 +1,6 @@
 def followMessage(name):
     message = "Halo, " + name + \
-            ", terima kasih sudah menambahkan saya sebagai teman."
+            ", terima kasih sudah menambahkan saya sebagai teman.\n\n"
 
     return message + helpMessage()
 

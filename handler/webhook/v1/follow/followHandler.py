@@ -1,7 +1,9 @@
+from handler
 from singleton.LineClient import LineClient
 from linebot.models import (
     TextSendMessage
 )
+from utils import MessageFactory
 
 class FollowEventHandler:
     def __init__(self):
@@ -17,9 +19,9 @@ class FollowEventHandler:
 
         self.lineClient.reply_message(
             event.reply_token,
-            TextSendMessage(text="Halo, " + firstName + ", terima kasih sudah follow saya ")
+            TextSendMessage(text = MessageFactory.followMessage(firstName)
+            )
         )
-
-
+        
 if __name__ == "__main__":
     pass
